@@ -7,14 +7,14 @@ import {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import Animated from "react-native-reanimated";
 import { useIsFocused } from "@react-navigation/native";
+import FloatingButton from "@/components/floatingButton";
 
-const Search = (props: any) => {
+const Search = () => {
   const buttonPosition = useSharedValue(-900);
   const isFocused = useIsFocused();
 
-  const buttonStyle = useAnimatedStyle(() => {
+  const floatingButtonStyle = useAnimatedStyle(() => {
     return {
       bottom: buttonPosition.value,
       opacity: interpolate(
@@ -38,11 +38,7 @@ const Search = (props: any) => {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.floatingButton, buttonStyle]}>
-        <Pressable>
-          <Text style={styles.buttonText}>Click</Text>
-        </Pressable>
-      </Animated.View>
+      <FloatingButton buttonStyle={floatingButtonStyle} />
     </View>
   );
 };
@@ -52,21 +48,5 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-
-  floatingButton: {
-    position: "relative",
-    left: 150,
-    backgroundColor: "#000",
-    width: 100,
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "600",
   },
 });

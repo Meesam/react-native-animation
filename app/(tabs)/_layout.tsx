@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Tabs, usePathname } from "expo-router";
+import { Tabs } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import TopHeader from "@/components/topHeader";
+import SearchHeader from "@/components/searchHeader";
 
 const TabLayout = () => {
-  const pathName = usePathname();
-
   return (
     <Tabs
       screenOptions={{
@@ -24,9 +23,6 @@ const TabLayout = () => {
             return <TopHeader />;
           },
         }}
-        initialParams={{
-          pathName: pathName,
-        }}
       />
       <Tabs.Screen
         name="search"
@@ -35,9 +31,9 @@ const TabLayout = () => {
             const color = props.focused ? "violet" : "gray";
             return <FontAwesome name="search" size={25} color={color} />;
           },
-        }}
-        initialParams={{
-          pathName: pathName,
+          header: () => {
+            return <SearchHeader />;
+          },
         }}
       />
       <Tabs.Screen
@@ -47,9 +43,6 @@ const TabLayout = () => {
             const color = props.focused ? "violet" : "gray";
             return <FontAwesome name="user" size={25} color={color} />;
           },
-        }}
-        initialParams={{
-          pathName: pathName,
         }}
       />
     </Tabs>
