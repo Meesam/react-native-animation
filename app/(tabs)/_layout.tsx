@@ -43,6 +43,9 @@ const TabLayout = () => {
             const color = props.focused ? "violet" : "gray";
             return <FontAwesome name="user" size={25} color={color} />;
           },
+          header: () => {
+            return <TopHeader />;
+          },
         }}
       />
     </Tabs>

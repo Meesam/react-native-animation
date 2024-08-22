@@ -48,20 +48,20 @@ const Profile = () => {
   };
 
   const { isPending, isError, data, error } = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["all-news-1"],
     queryFn: getNews,
   });
 
   return (
     <View style={styles.container}>
+      {isPending && <Text>Loading...</Text>}
+      {isError && <Text>error</Text>}
       <FlatList
         data={data?.articles}
         renderItem={({ item }) => (
           <Item title={item.title} urlToImage={item.urlToImage} />
         )}
         keyExtractor={(item) => item.url}
-        ListHeaderComponent=<Text>Hello Header</Text>
-        ListFooterComponent=<Text>Hello Footer</Text>
       />
     </View>
   );
@@ -72,14 +72,16 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10,
   },
   itemContainer: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: "#FFF",
     padding: 10,
     marginVertical: 8,
+    marginHorizontal: 10,
     flexDirection: "row",
     gap: 10,
+    borderRadius: 10,
+    elevation: 5,
   },
   itemImage: {
     width: 50,
@@ -87,9 +89,14 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   itemText: {
-    width: 320,
+    flex: 1,
   },
   title: {
     fontSize: 16,
+  },
+  newsContainer: {
+    flex: 1,
+    backgroundColor: "pink",
+    padding: 10,
   },
 });

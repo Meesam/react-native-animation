@@ -37,7 +37,7 @@ const TopHeader = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: "#FFF" }}>
       <View style={styles.container}>
         <View style={styles.headerPanel}>
           <Image
@@ -98,9 +98,8 @@ export default TopHeader;
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    borderBottomWidth: 0.5,
-    borderBottomColor: "gray",
     zIndex: 0,
+    backgroundColor: "#FFF",
   },
   headerPanel: {
     justifyContent: "space-between",
